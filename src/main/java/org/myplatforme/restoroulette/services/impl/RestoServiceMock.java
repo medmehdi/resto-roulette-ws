@@ -2,6 +2,8 @@ package org.myplatforme.restoroulette.services.impl;
 
 import java.util.List;
 
+import org.myplatforme.restoroulette.domain.Address;
+import org.myplatforme.restoroulette.domain.Coordinates;
 import org.myplatforme.restoroulette.domain.Resto;
 import org.myplatforme.restoroulette.services.RestoService;
 import org.springframework.context.annotation.Profile;
@@ -21,7 +23,9 @@ public class RestoServiceMock implements RestoService {
 
 	@Override
 	public Resto getById(String id) {
-		Resto resto = new Resto("title" + id, "imageUrl" + id, "description" + id, "address" + id, 1111.23, 1111.23, "accessUrl" + id);
+		Coordinates coordinates = new Coordinates(12345.34, 54319.45);
+		Address address = new Address(2, "toto" + id, "toto" + id, "toto" + id, "toto" + id, coordinates);
+		Resto resto = new Resto("title" + id, "imageUrl" + id, "description" + id, address, "accessUrl" + id);
 		return resto;
 	}
 
@@ -29,11 +33,13 @@ public class RestoServiceMock implements RestoService {
 	public List<Resto> getAll() {
 		int id = 0;
 		List<Resto> restos = Lists.newArrayList();
-		restos.add(new Resto("title" + id, "imageUrl" + id, "description" + id, "address" + id, 1111.23, 1111.23, "accessUrl" + id));
-		restos.add(new Resto("title" + id, "imageUrl" + id, "description" + id, "address" + id, 1111.23, 1111.23, "accessUrl" + id));
-		restos.add(new Resto("title" + id, "imageUrl" + id, "description" + id, "address" + id, 1111.23, 1111.23, "accessUrl" + id));
-		restos.add(new Resto("title" + id, "imageUrl" + id, "description" + id, "address" + id, 1111.23, 1111.23, "accessUrl" + id));
-
+		Coordinates coordinates = new Coordinates(12345.34, 54319.45);
+		Address address = new Address(2, "toto" + id++, "toto" + id, "toto" + id, "toto" + id, coordinates);
+		Resto resto = new Resto("title" + id, "imageUrl" + id, "description" + id, address, "accessUrl" + id);
+		restos.add(resto);
+		restos.add(resto);
+		restos.add(resto);
+		restos.add(resto);
 		return restos;
 	}
 

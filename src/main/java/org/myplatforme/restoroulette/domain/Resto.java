@@ -16,22 +16,19 @@ public class Resto {
 	private String title;
 	private String imageUrl;
 	private String description;
-	private String address;
-	private double longitude;
-	private double latitude;
+	private Address address;
+
 	// definie l'url d'acces à la ressource
 	private String accessUrl;
 
 	public Resto() {
 	}
 
-	public Resto(String title, String imageUrl, String description, String address, double longitude, double latitude, String accessUrl) {
+	public Resto(String title, String imageUrl, String description, Address address, String accessUrl) {
 		this.title = title;
 		this.imageUrl = imageUrl;
 		this.description = description;
 		this.address = address;
-		this.longitude = longitude;
-		this.latitude = latitude;
 		this.accessUrl = accessUrl;
 	}
 
@@ -67,30 +64,6 @@ public class Resto {
 		this.description = description;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
-	public double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-
 	public String getAccessUrl() {
 		return accessUrl;
 	}
@@ -99,9 +72,17 @@ public class Resto {
 		this.accessUrl = accessUrl;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return "Resto [title=" + title + ", imageUrl=" + imageUrl + ", description=" + description + ", address=" + address + ", longitude=" + longitude + ", latitude=" + latitude
-				+ ", accessUrl=" + accessUrl + "]";
+		return "Resto [id=" + id + ", title=" + title + ", imageUrl=" + imageUrl + ", description=" + description + ", address=" + address + ", accessUrl=" + accessUrl + "]";
 	}
+
 }
