@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.Profile;
 
 import com.mongodb.Mongo;
 
 @Configuration
-@Profile("mongo")
 @ImportResource("classpath:/properties-config.xml")
 public class MongoDataConfig {
 	private @Value("${mongo.host}")

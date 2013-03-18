@@ -6,6 +6,6 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan("org.myplatforme.restoroulette")
-@Import({ MongoDataConfig.class, EmbeddedMongoDataConfig.class })
+@Import({ MongoDataConfig.class })
 public class AppConfig {
 }

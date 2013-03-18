@@ -15,4 +15,7 @@ public interface RestoService {
 	void delete(int id);
 
 	List<Resto> findByCoordinates(double longitude, double latitude);
+
+	void dropCollection();
+
 }

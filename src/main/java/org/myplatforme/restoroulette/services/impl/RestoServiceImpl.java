@@ -4,6 +4,7 @@ import static org.jongo.Oid.withOid;
 
 import java.util.List;
 
+import org.jongo.MongoCollection;
 import org.myplatforme.restoroulette.domain.DbCollection;
 import org.myplatforme.restoroulette.domain.Resto;
 import org.myplatforme.restoroulette.mongodb.utils.JongoManager;
@@ -23,18 +24,17 @@ public class RestoServiceImpl implements RestoService {
 
 	@Override
 	public void saveOrUpdate(Resto resto) {
-		jongoManager.getCollection(DbCollection.RESTOS).save(resto);
-
+		getCollection().save(resto);
 	}
 
 	@Override
 	public Resto getById(String id) {
-		return jongoManager.getCollection(DbCollection.RESTOS).findOne(withOid(id)).as(Resto.class);
+		return getCollection().findOne(withOid(id)).as(Resto.class);
 	}
 
 	@Override
 	public List<Resto> getAll() {
-		return Lists.newArrayList(jongoManager.getCollection(DbCollection.RESTOS).find().as(Resto.class));
+		return Lists.newArrayList(getCollection().find().as(Resto.class));
 	}
 
 	@Override
@@ -47,6 +47,16 @@ public class RestoServiceImpl implements RestoService {
 	public List<Resto> findByCoordinates(double longitude, double latitude) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	private MongoCollection getCollection() {
+		return jongoManager.getCollection(DbCollection.RESTOS);
+	}
+
+	@Override
+	public void dropCollection() {
+		getCollection().drop();
+
 	}
 
 }
